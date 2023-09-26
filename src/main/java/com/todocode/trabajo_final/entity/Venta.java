@@ -4,8 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import java.time.LocalDate;
 import java.util.List;
 import lombok.Getter;
@@ -21,20 +21,31 @@ public class Venta {
     private Long id;
     private LocalDate fecha_venta;
     private Double total;
-    @OneToMany
-    private List<Producto> listaProductos;
-    @OneToOne
+
+    @ManyToMany(targetEntity = Producto.class)
+    private List<Producto> productos;
+
+    @ManyToOne(targetEntity = Cliente.class)
     private Cliente cliente;
 
     public Venta() {
+        this.fecha_venta = LocalDate.now();
     }
 
-    public Venta(Long id, LocalDate fecha_venta, Double total, List<Producto> listaProductos, Cliente cliente) {
-        this.id = id;
-        this.fecha_venta = fecha_venta;
-        this.total = total;
-        this.listaProductos = listaProductos;
+    public Venta(Cliente cliente, List<Producto> productos) {
         this.cliente = cliente;
+        this.productos = productos;
+        this.fecha_venta = LocalDate.now(); //fecha actual
+        this.total = totalCompra(productos); //funcion suma costos
+    }
+
+    //Funcion suma el costo de todos los Productos
+    private Double totalCompra(List<Producto> productos) {
+        Double suma = 0D;
+        for (Producto producto : productos) {
+            suma += producto.getCosto();
+        }
+        return suma;
     }
 
 }

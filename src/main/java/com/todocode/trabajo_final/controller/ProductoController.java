@@ -30,7 +30,6 @@ public class ProductoController {
         try {
             List<Producto> productos = productoService.findAll();
             return ResponseEntity.status(200).body(productos);
-
         } catch (Exception e) {
             return ResponseEntity.status(400).body(e.getMessage());
         }
@@ -41,7 +40,6 @@ public class ProductoController {
         try {
             Producto producto = productoService.findOne(id);
             return ResponseEntity.status(200).body(producto);
-
         } catch (Exception e) {
             return ResponseEntity.status(400).body(e.getMessage());
         }
@@ -52,7 +50,6 @@ public class ProductoController {
         try {
             productoService.create(producto);
             return ResponseEntity.status(201).body("Producto creado con éxito!");
-
         } catch (Exception e) {
             return ResponseEntity.status(400).body(e.getMessage());
         }
@@ -63,7 +60,6 @@ public class ProductoController {
         try {
             productoService.delete(id);
             return ResponseEntity.status(200).body("Producto borrado con éxito!");
-
         } catch (Exception e) {
             return ResponseEntity.status(400).body(e.getMessage());
 
@@ -75,7 +71,6 @@ public class ProductoController {
         try {
             productoService.editPut(id, producto);
             return ResponseEntity.status(200).body("Producto modificado con éxito!");
-
         } catch (Exception e) {
             return ResponseEntity.status(400).body(e.getMessage());
         }
@@ -90,7 +85,6 @@ public class ProductoController {
         try {
             productoService.editPatch(id, nombre, marca, costo, cant_disponible);
             return ResponseEntity.status(200).body("Producto modificado con éxito!");
-
         } catch (Exception e) {
             return ResponseEntity.status(400).body(e.getMessage());
         }

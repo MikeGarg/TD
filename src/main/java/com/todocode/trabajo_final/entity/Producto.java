@@ -23,12 +23,4 @@ public class Producto {
     public Producto() {
     }
 
-    public Producto(Long id, String nombre, String marca, Double costo, Integer cant_disponible) {
-        this.id = id;
-        this.nombre = nombre;
-        this.marca = marca;
-        this.costo = costo;
-        this.cant_disponible = cant_disponible;
-    }
-
 }

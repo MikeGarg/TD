@@ -30,7 +30,6 @@ public class ClienteController {
         try {
             List<Cliente> clientes = clienteService.findAll();
             return ResponseEntity.status(200).body(clientes);
-
         } catch (Exception e) {
             return ResponseEntity.status(400).body(e.getMessage());
         }
@@ -51,7 +50,6 @@ public class ClienteController {
         try {
             clienteService.create(cliente);
             return ResponseEntity.status(201).body("Cliente creado con éxito!");
-
         } catch (Exception e) {
             return ResponseEntity.status(400).body(e.getMessage());
         }
@@ -62,7 +60,6 @@ public class ClienteController {
         try {
             clienteService.delete(id);
             return ResponseEntity.status(200).body("Cliente borrado con éxito!");
-
         } catch (Exception e) {
             return ResponseEntity.status(400).body(e.getMessage());
         }
@@ -73,10 +70,8 @@ public class ClienteController {
         try {
             clienteService.editPut(id, cliente);
             return ResponseEntity.status(200).body("Cliente editado con éxito");
-
         } catch (Exception e) {
             return ResponseEntity.status(400).body(e.getMessage());
-
         }
     }
 
@@ -88,7 +83,6 @@ public class ClienteController {
         try {
             clienteService.editPatch(id, nombre, apellido, dni);
             return ResponseEntity.status(200).body("Cliente modificado con éxito!");
-
         } catch (Exception e) {
             return ResponseEntity.status(400).body(e.getMessage());
         }
